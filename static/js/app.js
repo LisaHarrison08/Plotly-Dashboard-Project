@@ -20,7 +20,7 @@ function init() {
           .text(value)
           .attr("value", value);
       });
-
+      // Populate Test Subject
       demoInfo(names[0]);
       barChart(names[0]);
     });
@@ -53,11 +53,9 @@ function demoInfo(testSubject) {
 }
 
 //Function to build a Horizontal Bar Chart using sample data
-// Use otu_labels as the hovertext for the chart
 
 function barChart(name){
-  var sample = data.samples.filter(obj => obj.id == name)[0];
-  
+  var sample = data.samples.filter(obj => obj.id == name)[0];  
 // console.log(sample);
 
 var trace1 = {
@@ -70,7 +68,7 @@ var trace1 = {
 
   //  Apply the group bar mode to the layout
   var layout1 = {
-    title: "Sample id940",
+    title: "Test Subject Top OTUs",
     margin: {
       l: 100,
       r: 100,
