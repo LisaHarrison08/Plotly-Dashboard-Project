@@ -22,6 +22,7 @@ function init() {
       });
 
       demoInfo(names[0]);
+      barChart(names[0]);
     });
   }
   //Names added to the dropdown
@@ -33,6 +34,7 @@ function init() {
   function dashFunctions() {
     var testSubject = d3.select("#selDataset").node().value;
     demoInfo(testSubject);
+    barChart(testSubject);
   }
 
 //Function to build demographic info
@@ -52,3 +54,31 @@ function demoInfo(testSubject) {
 
 //Function to build a Horizontal Bar Chart using sample data
 // Use otu_labels as the hovertext for the chart
+
+function barChart(name){
+  var sample = data.samples.filter(obj => obj.id == name)[0];
+  
+// console.log(sample);
+
+var trace1 = {
+  x : sample.sample_values.slice(0,10).reverse(),
+  y : sample.otu_ids.slice(0,10).reverse().map(y => `OTU ${y}`),
+  type:'bar',
+  orientation:'h',
+  }
+  var barData = [trace1];
+
+  //  Apply the group bar mode to the layout
+  var layout1 = {
+    title: "Sample id940",
+    margin: {
+      l: 100,
+      r: 100,
+      t: 100,
+      b:100
+    }
+  };
+  
+//  Render the plot to the id "#bar" 
+  Plotly.newPlot('bar',barData,layout1);
+};
