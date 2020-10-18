@@ -1,5 +1,9 @@
 # Plot.ly - Belly Button Biodiversity
 
+## Completed Dashboard Deployed to Heroku:
+### https://plotly-d3-dashboard.herokuapp.com
+
+
 ![Bacteria by filterforge.com](Images/bacteria.jpg)
 
 Built an interactive dashboard to explore the [Belly Button Biodiversity dataset](http://robdunnlab.com/projects/belly-button-biodiversity/), which catalogs the microbes that colonize human navels.
