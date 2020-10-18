@@ -23,6 +23,7 @@ function init() {
       // Populate Test Subject
       demoInfo(names[0]);
       barChart(names[0]);
+      bubbleChart(names[0]);
     });
   }
   //Names added to the dropdown
@@ -35,6 +36,7 @@ function init() {
     var testSubject = d3.select("#selDataset").node().value;
     demoInfo(testSubject);
     barChart(testSubject);
+    bubbleChart(testSubject);
   }
 
 //Function to build demographic info
@@ -80,3 +82,38 @@ var trace1 = {
 //  Render the plot to the id "#bar" 
   Plotly.newPlot('bar',barData,layout1);
 };
+
+// Function to build a Bubble Chart that displays each sample
+
+function bubbleChart(test) {
+  var sampled = data.samples.filter(obj => obj.id == test)[0];
+  
+  var trace2 = {
+    x : sampled.otu_ids,
+    y : sampled.sample_values,
+    text: sampled.otu_labels,
+    mode: 'markers',
+    marker: {
+        color: sampled.otu_ids,
+        size: sampled.sample_values,
+      }
+  };
+  var bubbleT = [trace2];
+
+  // Apply the group bar mode to the layout
+  var layout2 = {
+    title: "Test Subject Samples",
+    xaxis: {
+      autorange: true,
+      title: "Operational Taxonomic Unit (OTU) ID"
+    },
+    yaxis: {
+      autorange: true,
+      title: "Sample Values"
+    }
+  };
+  
+//  Render the plot to the id "#bubble" 
+  Plotly.newPlot('bubble',bubbleT,layout2);
+};
+
