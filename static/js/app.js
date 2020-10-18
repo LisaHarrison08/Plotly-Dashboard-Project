@@ -24,6 +24,7 @@ function init() {
       demoInfo(names[0]);
       barChart(names[0]);
       bubbleChart(names[0]);
+      gaugeChart(names[0]);
     });
   }
   //Names added to the dropdown
@@ -37,6 +38,7 @@ function init() {
     demoInfo(testSubject);
     barChart(testSubject);
     bubbleChart(testSubject);
+    gaugeChart(testSubject);
   }
 
 //Function to build demographic info
@@ -117,3 +119,37 @@ function bubbleChart(test) {
   Plotly.newPlot('bubble',bubbleT,layout2);
 };
 
+//Function to build a Gauge Chart to plot the weekly washing frequency
+// Need to modify the example gauge code for values ranging 1-10
+function gaugeChart(noname) {
+  var filterValue = data.metadata.filter(obj => obj.id == noname)[0].wfreq;
+  console.log(filterValue);
+}
+
+// var data = [
+//   {
+//     domain: { x: [0, 1], y: [0, 1] },
+//     value: 450,
+//     title: { text: "Speed" },
+//     type: "indicator",
+//     mode: "gauge+number+delta",
+//     delta: { reference: 380 },
+//     gauge: {
+//       axis: { range: [null, 500] },
+//       steps: [
+//         { range: [0, 250], color: "lightgray" },
+//         { range: [250, 400], color: "gray" }
+//       ],
+//       threshold: {
+//         line: { color: "red", width: 4 },
+//         thickness: 0.75,
+//         value: filterValue
+//       }
+//     }
+//   }
+// ];
+
+// var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
+
+// Plotly.newPlot('gauge', data, layout);
+// }
