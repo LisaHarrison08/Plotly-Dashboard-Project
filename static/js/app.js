@@ -79,11 +79,12 @@ var trace1 = {
   //  Apply the group bar mode to the layout
   var layout1 = {
     title: "Test Subject Top OTUs",
+    // width: 300, height: 400
     margin: {
-      l: 100,
-      r: 100,
-      t: 100,
-      b:100
+      l: 150,
+      r: 50,
+      t: 50,
+      b: 50
     }
   };
   
