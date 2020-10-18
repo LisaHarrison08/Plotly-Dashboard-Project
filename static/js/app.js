@@ -123,33 +123,43 @@ function bubbleChart(test) {
 // Need to modify the example gauge code for values ranging 1-10
 function gaugeChart(noname) {
   var filterValue = data.metadata.filter(obj => obj.id == noname)[0].wfreq;
-  console.log(filterValue);
+
+  var gdata = [
+    {
+      domain: { x: [0, 1], y: [0, 1] },
+      title: {
+        text: "Belly Button Washing Frequency"
+      },
+      type: "indicator",
+
+      mode: "gauge",
+      gauge: {
+        axis: {
+          range: [0, 9],
+          tickvals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+          ticks: "outside"
+        },
+
+        steps: [
+          { range: [0, 1], color: "#FFEFD5" },
+          { range: [1, 2], color: "#FFDAB9" },
+          { range: [2, 3], color: "#FFA07A" },
+          { range: [3, 4], color: "#FA8072" },
+          { range: [4, 5], color: "#F08080" },
+          { range: [5, 6], color: "#98FB98" },
+          { range: [6, 7], color: "#90EE90" },
+          { range: [7, 8], color: "#3CB371" },
+          { range: [8, 9], color: "#2E8B57" }
+        ],
+        threshold: {
+          line: { color: "red", width: 8 },
+          thickness: 4,
+          value: filterValue
+        }
+      }
+    }
+  ];
+
+  var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+  Plotly.newPlot("gauge", gdata, layout);
 }
-
-// var data = [
-//   {
-//     domain: { x: [0, 1], y: [0, 1] },
-//     value: 450,
-//     title: { text: "Speed" },
-//     type: "indicator",
-//     mode: "gauge+number+delta",
-//     delta: { reference: 380 },
-//     gauge: {
-//       axis: { range: [null, 500] },
-//       steps: [
-//         { range: [0, 250], color: "lightgray" },
-//         { range: [250, 400], color: "gray" }
-//       ],
-//       threshold: {
-//         line: { color: "red", width: 4 },
-//         thickness: 0.75,
-//         value: filterValue
-//       }
-//     }
-//   }
-// ];
-
-// var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
-
-// Plotly.newPlot('gauge', data, layout);
-// }
