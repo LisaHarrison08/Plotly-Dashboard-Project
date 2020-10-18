@@ -61,6 +61,8 @@ function demoInfo(testSubject) {
 function barChart(name){
   var sample = data.samples.filter(obj => obj.id == name)[0];  
 // console.log(sample);
+// Variable for 10 colors to apply to bar chart
+  var tenColors = ['#00CED1', '#FFFF00', '#FF7F50', '#00FF00', '#9932CC', '#C71585', '#708090', '#7B68EE', '#F08080', '#00FA9A'];
   
 var trace1 = {
   x : sample.sample_values.slice(0,10).reverse(),
@@ -69,8 +71,8 @@ var trace1 = {
   orientation:'h',
   mode:'markers',
   marker:{
-    color: "green",
-  }
+    color: tenColors,
+   }
   }
   var barData = [trace1];
 
@@ -156,7 +158,7 @@ function gaugeChart(noname) {
           { range: [8, 9], color: "#2E8B57" }
         ],
         threshold: {
-          line: { color: "red", width: 8 },
+          line: { color: "#800000", width: 8 },
           thickness: 4,
           value: filterValue
         }
