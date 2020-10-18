@@ -61,12 +61,16 @@ function demoInfo(testSubject) {
 function barChart(name){
   var sample = data.samples.filter(obj => obj.id == name)[0];  
 // console.log(sample);
-
+  
 var trace1 = {
   x : sample.sample_values.slice(0,10).reverse(),
   y : sample.otu_ids.slice(0,10).reverse().map(y => `OTU ${y}`),
   type:'bar',
   orientation:'h',
+  mode:'markers',
+  marker:{
+    color: "green",
+  }
   }
   var barData = [trace1];
 
@@ -160,6 +164,6 @@ function gaugeChart(noname) {
     }
   ];
 
-  var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+  var layout = { width: 700, height: 400, margin: { t: 0, b: 0 } };
   Plotly.newPlot("gauge", gdata, layout);
 }
