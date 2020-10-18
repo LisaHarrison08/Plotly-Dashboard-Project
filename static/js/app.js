@@ -100,7 +100,7 @@ function bubbleChart(test) {
   };
   var bubbleT = [trace2];
 
-  // Apply the group bar mode to the layout
+  // Apply the layout
   var layout2 = {
     title: "Test Subject Samples",
     xaxis: {
